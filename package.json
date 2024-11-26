@@ -10,10 +10,29 @@
     "express": "^4"
   },
   "devDependencies": {
+    "@cap-js/cds-types": "^0.7.0",
     "@cap-js/sqlite": "^1",
-    "@cap-js/cds-types": "^0.7.0"
+    "@sap/cds-dk": "^8",
+    "rimraf": "^5.0.5"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch-online-store": "cds watch --open online-store/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy btp-online-store --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "hana",
+        "pool": {
+          "acquireTimeoutMillis": 10000
+        }
+      }
+    }
+  },
+  "hana": {
+    "deploy-format": "hdbtable"
   }
 }

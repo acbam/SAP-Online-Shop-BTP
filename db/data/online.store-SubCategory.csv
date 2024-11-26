@@ -1,0 +1,10 @@
+ID;name;parent_ID;
+d95cbb6b-3284-4b74-a503-203e43d6ff3b;Cable Assemblies;51f433f0-ec65-4ff9-bfa5-41c87056b221;
+5e0b7b92-320b-4921-b9d4-52811bd2361f;Coaxial Cables;51f433f0-ec65-4ff9-bfa5-41c87056b221;
+4431b451-a869-46a4-93d9-65fe527899dd;Connectors Barrel Adapters;51f433f0-ec65-4ff9-bfa5-41c87056b221;
+3cc0841f-f48d-40c1-bc0a-abbb3133b399;Couplers;51f433f0-ec65-4ff9-bfa5-41c87056b221;
+6e2706da-1e6b-4848-b107-443be1b17d62;Environmental Enclosures;51f433f0-ec65-4ff9-bfa5-41c87056b221;
+d79835a9-b666-4e10-9688-9e31bcc33345;Active Fiber Components;cde5fadd-8968-499e-8bce-11550c52e799;
+3e5b343d-365d-4e8b-af1e-f92dfb0baa9e;Passive Fiber Components;cde5fadd-8968-499e-8bce-11550c52e799;
+72e6f02c-673c-4269-ad69-83bef3bb67b5;IoT and Monitoring Devices;d0b4cd8a-a1a1-45f2-bc96-1b360a5e6298;
+f0352d22-baab-40ef-9a47-6ccb053218de;Customized Networking Hardware;d0b4cd8a-a1a1-45f2-bc96-1b360a5e6298;
