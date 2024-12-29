@@ -6,7 +6,9 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@cap-js/hana": "^1",
     "@sap/cds": "^8",
+    "@sap/xssec": "^4.2.7",
     "express": "^4"
   },
   "devDependencies": {
@@ -24,12 +26,19 @@
   },
   "cds": {
     "requires": {
+      "auth":{
+        "impl": "./srv/handler.js"
+      },
+      "restrict_all_services": false,
       "db": {
         "kind": "hana",
         "pool": {
           "acquireTimeoutMillis": 10000
         }
       }
+    },
+    "sql": {
+      "native_hana_associations": false
     }
   },
   "hana": {

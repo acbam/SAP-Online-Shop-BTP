@@ -25,7 +25,7 @@ sap.ui.define([
             }
         },
 
-        onLoginPress: async function () {
+        onLoginPress: function () {
             var oDialog = this.getView().byId("loginDialog");
             oDialog.open();
         },
@@ -35,24 +35,15 @@ sap.ui.define([
         },
 
         onLoginSubmit: function () {
-             var oUsername = this.getView().byId("username");
-             var oPassword = this.getView().byId("password");
+            var sUsername = this.getView().byId("username").getValue();
+            var sPassword = this.getView().byId("password").getValue();
 
-             const oActionODataContextBinding = this.getView().getModel("authentication").bindContext("/login(...)");
-             oActionODataContextBinding.setParameter("username", oUsername.getValue());
-             oActionODataContextBinding.setParameter("password", oPassword.getValue());
-             oActionODataContextBinding.execute().then(
-                function() {
-                    var authResult = oActionODataContextBinding.getBoundContext().getObject().value;
-                    if (authResult){
-                        MessageToast.show("Logged in successfully");
-                        oUsername.setValue("");
-                        oPassword.setValue("");
-                        this.onLoginCancel();
-                    }
-                    else { MessageToast.show("Logged in failed"); }
-                }.bind(this)
-             );
+            if (sUsername === "admin" && sPassword === "password") {
+                MessageToast.show("Login successful!");
+                this.getView().byId("loginDialog").close();
+            } else {
+                MessageToast.show("Invalid username or password");
+            }
         }
     });
 });

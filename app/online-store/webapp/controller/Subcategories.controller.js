@@ -4,44 +4,31 @@ sap.ui.define([
     "use strict";
 
     return Controller.extend("sap.ui.demo.controller.Subcategories", {
-        onInit: function () {
+        onInit: function () {        
+            // const oModel = new sap.ui.model.json.JSONModel();
+            // oModel.loadData("model/categories.json", null, false); // Синхронная загрузка данных
+            // this.getView().setModel(oModel);
+        
             const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("Subcategories").attachPatternMatched(this._onObjectMatched, this);
-            
         },
-      
+        
+        // fixed by binding element from parent to child node
         _onObjectMatched: function (oEvent) {
-            const sCategoryId = oEvent.getParameter("arguments").categoryId;
-            // Подгрузка подкатегорий (привязка к модели)
-            const oModel = this.getOwnerComponent().getModel();
-            const aSubcategories = oModel.getProperty("/categories").find(cat => cat.id === sCategoryId).subcategories;
-            console.log(aSubcategories)
-            // Устанавливаем подкатегории как текущие данные модели
-            oModel.setProperty("/subcategories", aSubcategories);
-            this.getView().setModel(oModel);
+            const sId = oEvent.getParameter("arguments").id;
+			this.getView().bindElement({
+			    path : `/Categories(${sId})`});
         },
 
         onNavBack: function () {
             this.getOwnerComponent().getRouter().navTo("Main");
         },
 
-        onAfterRendering: function () {
-            const oFlexBox = this.getView().byId("subcategoriesFlexBox");
-        
-            if (oFlexBox) {
-                oFlexBox.attachEventOnce("modelContextChange", function () {
-                    const aVBoxItems = oFlexBox.getItems();
-        
-                    aVBoxItems.forEach((oVBox) => {
-                        oVBox.attachBrowserEvent("click", () => this._onVBoxClick(oVBox));
-                    });
-                }.bind(this));
-            }
-        },
-        
-        _onVBoxClick: function (oVBox) {
-            const sCategoryId = oVBox.getCustomData().find(data => data.getKey() === "id").getValue();
-            this.getOwnerComponent().getRouter().navTo("Products", { categoryId: sCategoryId });
-        },
+        onItemPress: function(oEvent) {
+            var oItem = oEvent.getSource();
+            var oBindingContext = oItem.getBindingContext();
+            var sId = oBindingContext.getProperty("ID");
+            this.getOwnerComponent().getRouter().navTo("Products", { id: sId });
+        }
     });
 });

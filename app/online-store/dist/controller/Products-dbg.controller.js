@@ -10,9 +10,7 @@ sap.ui.define([
         },
 
         _onObjectMatched: function (oEvent) {
-            const sId = oEvent.getParameter("arguments").id;
-			this.getView().bindElement({
-			    path : `/SubCategories(${sId})`});
+
         },
     });
 });

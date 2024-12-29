@@ -5,8 +5,8 @@
     {
       "source": "^/odata/(.*)$",
       "target": "/odata/$1",
-      "destination": "DIRECT_SERVICE_BINDING",
-      "authenticationType": "xsuaa",
+      "destination": "btp-online-store-srv-api",
+      "authenticationType": "none",
       "csrfProtection": false
     },
     {
@@ -25,7 +25,7 @@
       "source": "^(.*)$",
       "target": "$1",
       "service": "html5-apps-repo-rt",
-      "authenticationType": "xsuaa"
+      "authenticationType": "none"
     }
   ]
 }

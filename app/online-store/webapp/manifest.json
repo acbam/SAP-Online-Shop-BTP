@@ -23,6 +23,14 @@
           "annotations": [],
           "odataVersion": "4.0"
         }
+      },
+      "authenticationService": {
+        "uri": "/odata/v4/authentication/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
       }
     },
     "crossNavigation": {
@@ -83,6 +91,15 @@
           "autoExpandSelect": true,
           "earlyRequests": true
         }
+      },
+      "authentication": {
+        "dataSource": "authenticationService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
       }
     },
     "resources": {
@@ -93,60 +110,70 @@
       ]
     },
     "routing": {
-      "config": {
-        "routerClass": "sap.m.routing.Router",
-        "controlAggregation": "pages",
-        "controlId": "app",
-        "transition": "slide",
-        "type": "View",
-        "viewType": "XML",
-        "path": "onlinestore.view"
+        "config": {
+            "routerClass": "sap.m.routing.Router",
+            "viewType": "XML",
+            "viewPath": "onlinestore.view",
+            "controlId": "app",
+            "controlAggregation": "pages",
+            "transition": "slide",
+            "async": true,
+            "mode": "history"   
+        },
+        "routes": [
+            {
+                "pattern": "",
+                "name": "Main",
+                "target": "Main"
+            },
+            {
+                "pattern": "cart",
+                "name": "Cart",
+                "target": "Cart"
+            },
+            {
+              "pattern": "Subcategories/{id}",
+              "name": "Subcategories",
+              "target": "Subcategories"
+            },
+            {
+              "pattern": "Products/{id}",
+              "name": "Products",
+              "target": "Products"
+            },
+            {
+              "pattern": "Product/{id}",
+              "name": "Product",
+              "target": "Product"
+            }
+        ],
+        "targets": {
+            "Main": {
+                "viewName": "Main",
+                "viewLevel": 1
+            },
+            "Cart": {
+                "viewName": "Cart",
+                "viewLevel": 2
+            },
+            "Subcategories": {
+              "viewName": "Subcategories",
+              "viewLevel": 3
+            },
+            "Products": {
+              "viewName": "Products",
+              "viewLevel": 4
+            },
+            "Product": {
+              "viewName": "Product",
+              "viewLevel": 5
+            }
+        }
       },
-      "routes": [
-        {
-            "pattern": "",
-            "name": "Main",
-            "target": "Main"
-        },
-        {
-            "pattern": "cart",
-            "name": "Cart",
-            "target": "Cart"
-        },
-        {
-          "pattern": "Subcategories/{categoryId}",
-          "name": "Subcategories",
-          "target": "Subcategories"
-        },
-        {
-          "pattern": "Products/{categoryId}",
-          "name": "Products",
-          "target": "Products"
-        }
-    ],
-    "targets": {
-        "Main": {
-            "viewName": "Main",
-            "viewLevel": 1
-        },
-        "Cart": {
-            "viewName": "Cart",
-            "viewLevel": 2
-        },
-        "Subcategories": {
-          "viewName": "Subcategories",
-          "viewLevel": 3
-        },
-        "Products": {
-          "viewName": "Products",
-          "viewLevel": 4
-        }
-    }
-    },
-    "rootView": {
+      "rootView": {
       "viewName": "onlinestore.view.App",
       "type": "XML",
       "id": "App"
     }
-  }
+    }
 }

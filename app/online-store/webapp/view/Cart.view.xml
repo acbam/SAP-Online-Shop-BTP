@@ -1,32 +1,98 @@
 <mvc:View
     controllerName="onlinestore.controller.Cart"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:m="sap.m">
+    <m:VBox class="mainPage">  
+          <Title text="Cart" class="cartTitle" />
+        <m:HBox class="flexBox">
+    <m:FlexBox
+        id="cart"
+        width="100%"
+        wrap="Wrap"
+        alignItems="Start"
+        justifyContent="SpaceBetween"
+        class="cartProductContainer">
+         <m:HBox class="cartCard">
+            <m:CheckBox class="cartCheckbox" selected="true" />
+            <m:Image src="https://www.axis.com/sites/axis/files/styles/standard_1360_x_auto/public/2024-03/p1388be_wall_angle_left_2401-Productimageswithcropping.png.webp?itok=q0tuc_xE" class="cartImage" press="onItemPress"/>
+            <m:HBox class="cartBox">
+            <m:VBox class="cartDetail">
+            <m:Text text="AXIS P1388-BE Box Camera" class="cartName" />
+            <m:HBox>
+                <m:Button text="" icon="sap-icon://heart" class="cartButton" press="onAddToCart"/>
+                <m:Button text="" icon="sap-icon://delete" class="cartButton" press="onAddToCart"/>
+            </m:HBox>
+            </m:VBox>
+            <m:Text text="430 USD." class="cartPrice" />
+            
+            <m:HBox class="cartButtonBox">
+                <m:Button text="" icon="sap-icon://less" class="cartButton" press="onAddToCart"/>
+                <!-- <m:Text text="3" class="cartPrice" /> -->
+                <m:Button text="" icon="sap-icon://add" class="cartButton" press="onAddToCart"/>
+            </m:HBox>   
+            </m:HBox>   
+        </m:HBox>    
+        
+        
+         <m:HBox class="cartCard">
+            <m:CheckBox class="cartCheckbox" selected="true" />
+            <m:Image src="https://www.axis.com/sites/axis/files/styles/standard_1360_x_auto/public/2020-01/1600_q8641e_35mm_angle_left_1704.png.webp?itok=YdnDmZiA" class="cartImage" press="onItemPress"/>
+            <m:HBox class="cartBox">
+            <m:VBox class="cartDetail">
+            <m:Text text="AXIS Q8641-E PT Thermal Network Camera" class="cartName" />
+            <m:HBox>
+                <m:Button text="" icon="sap-icon://heart" class="cartButton" press="onAddToCart"/>
+                <m:Button text="" icon="sap-icon://delete" class="cartButton" press="onAddToCart"/>
+            </m:HBox>
+            </m:VBox>
+            <m:Text text="690 USD." class="cartPrice" />
+            
+            <m:HBox class="cartButtonBox">
+                <m:Button text="" icon="sap-icon://less" class="cartButton" press="onAddToCart"/>
+                <!-- <m:Text text="3" class="cartPrice" /> -->
+                <m:Button text="" icon="sap-icon://add" class="cartButton" press="onAddToCart"/>
+            </m:HBox>   
+            </m:HBox>   
+        </m:HBox>    
+    </m:FlexBox>
+        <m:VBox class="cartContainer">
+            <m:VBox class="cartBox1">
+                <m:Button text="Proceed to checkout" icon="sap-icon://approvals" class="orderButton" press="onAddToCart"/>
+                <m:Text text="Available delivery methods and times can be selected when placing an order." class="cartText" />
+            </m:VBox>
+            
+            <!-- <m:VBox class="cartBox1"> -->
+             <m:FlexBox
+                alignItems="Center"
+                justifyContent="SpaceBetween"> 
+                <m:Text text="Your Cart" class="cartBoxTitle" />
+                <m:Text text="2 items" class="cartBoxItems" />
+            </m:FlexBox> 
 
-    <Page title="Shopping Cart">
-        <content>
-            <List id="cartList" items="{cartModel>/cartItems}">
-                <ObjectListItem
-                    title="{cartModel>name}"
-                    number="{cartModel>price}"
-                    numberUnit="USD"
-                    intro="{cartModel>category}"
-                    icon="{cartModel>image}">
-                    <attributes>
-                        <ObjectAttribute text="{cartModel>description}" />
-                    </attributes>
-                    <!-- Кнопка удаления товара -->
+            <m:FlexBox
+                alignItems="Center"
+                justifyContent="SpaceBetween"> 
+                <m:Text text="Products (2)" class="cartBoxText" />
+                <m:Text text="1 120.00 USD." class="cartBoxPrice" />
+            </m:FlexBox> 
+            
+            <m:FlexBox
+                alignItems="Center"
+                justifyContent="SpaceBetween"> 
+                <m:Text text="Discount" class="cartBoxText" />
+                <m:Text text="-112.00 USD." class="cartBoxDiscount" />
+            </m:FlexBox> 
 
-                </ObjectListItem>
-            </List>
-
-            <VBox class="sapUiSmallMargin">
-                <Label text="Total:" />
-                <Text text="{cartModel>/totalPrice}" />
-            </VBox>
-
-            <Button text="Proceed to Checkout" press="onCheckoutPress"/>
-        </content>
-    </Page>
-
+            <m:FlexBox
+                alignItems="Center"
+                justifyContent="SpaceBetween"
+                class="cartTotalBox"> 
+                <m:Text text="Total cost" class="cartBoxTotalText" />
+                <m:Text text="1008.00 USD." class="cartBoxTotalText" />
+            </m:FlexBox> 
+            <!-- </m:VBox> -->
+        </m:VBox>
+    </m:HBox> 
+    </m:VBox>
 </mvc:View>

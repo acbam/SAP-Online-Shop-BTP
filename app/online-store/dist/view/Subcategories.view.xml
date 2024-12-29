@@ -3,12 +3,14 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
     controllerName="onlinestore.controller.Subcategories">
-        <VBox class="mainPage">
-        <Breadcrumbs id="breadcrumbs2" class="sapUiTinyMarginTop" currentLocationText="Accesories">
-                <Link text="Main" press="onBreadcrumbPress" />
-        </Breadcrumbs>
+       <VBox class="mainPage">
+        <Button 
+            text="Back" 
+            icon="sap-icon://nav-back" 
+            press="onNavBack" 
+            class="backButton" />
 
-        <Title text="{name}" class="sapUiMediumMarginTop productTitle" />
+        <Title text="Product categories" class="sapUiMediumMarginTop productTitle" />
         <Text text="The Company portfolio includes all major categories of broadband products necessary to get the job done right." 
             class="sapUiSmallMarginTop sapUiMediumMarginBottom productSubtitle"/>
 
@@ -17,11 +19,17 @@
             wrap="Wrap"
             alignItems="Start"
             justifyContent="SpaceBetween"
-            items="{subcategories}"> <!--after binding element from parent Category -->
-			<CustomListItem class="productCard" type="Active" press="onItemPress">
+            items="{/subcategories}"
+            id="subcategoriesFlexBox">
+            <items>
+                <VBox width="17%" class="productCard">
+                    <customData>
+                        <core:CustomData key="id" value="{id}" />
+                    </customData>
                     <Image src="{image}" width="100%" height="150px" class="productImage"/>
                     <Text text="{name}" class="productName" />
-		    </CustomListItem>
+                </VBox>
+            </items>
         </FlexBox>
     </VBox>
 </mvc:View>

@@ -21,17 +21,10 @@ sap.ui.define([
             oModel.loadData(sUrl);
         },
 
-        onItemPress: function(oEvent) {
-            var oItem = oEvent.getSource();
-            var oBindingContext = oItem.getBindingContext();
-            var sId = oBindingContext.getProperty("ID");
-            this.getOwnerComponent().getRouter().navTo("Subcategories", { id: sId });
-        },
-        
         onAfterRendering: function () {
             const oView = this.getView();
             const aProductCards = oView.$().find(".productCard");
-            //console.log(aProductCards)
+            console.log(aProductCards)
 
             aProductCards.each((index, element) => {
                 var that = this;

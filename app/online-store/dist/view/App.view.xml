@@ -1,25 +1,18 @@
 <mvc:View
     controllerName="onlinestore.controller.App"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:core="sap.ui.core"
     xmlns="sap.m">
     <App>
-        <Page backgroundDesign="Standard" showHeader="false">
-            <Toolbar class="menu">
-                <HBox class="menuContainer">
-                    <HBox>
-                        <Image src="https://go.security101.com/hubfs/axis-logo-reverse-2022.svg" class="menuLogo"/>
-                        <Button icon="sap-icon://menu" text="Catalog" class="menuButtonCatalog" press="onNavToMain"/>
-                    </HBox>
-                    <SearchField class="menuSearch" />
-                    <HBox>
-                        <Button icon="sap-icon://heart-2" text="" class="menuButtonFav" press="onLoginPress" />
-                        <Button icon="sap-icon://customer" text="Login" class="menuButton" press="onLoginPress" />
-                        <Button icon="sap-icon://cart" text="Cart" class="menuButton" press=".onNavToCart"/>
-                    </HBox>
-                </HBox>
-            </Toolbar>
-            
+        <Page title="Online Store" showNavButton="true" navButtonPress="onNavBack">
+            <headerContent>
+                <Toolbar class="menu">
+                	<SearchField />
+                    <Button icon="sap-icon://home" text="Home" class="menuButton" press="onNavToMain"/>
+                    <Button icon="sap-icon://detail-more" text="About" class="menuButton" press="onNavToMac"/>
+                    <Button icon="sap-icon://customer" class="" press="onLoginPress" />
+                    <Button icon="sap-icon://cart" class="" press=".onNavToCart"/>
+                </Toolbar>
+            </headerContent>
             
             <content>
                 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sap.ui.demo.controller.App" class="container">

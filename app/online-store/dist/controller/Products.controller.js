@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller"],function(t,e){"use strict";return t.extend("sap.ui.demo.controller.Products",{onInit:function(){const t=sap.ui.core.UIComponent.getRouterFor(this);t.getRoute("Products").attachPatternMatched(this._onObjectMatched,this)},_onObjectMatched:function(t){}})});
+//# sourceMappingURL=Products.controller.js.map

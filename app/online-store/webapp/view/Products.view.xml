@@ -1,0 +1,57 @@
+<mvc:View
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:f="sap.f"
+	xmlns:form="sap.ui.layout.form"
+    xmlns:forms="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+
+		xmlns:layout="sap.ui.layout"
+    controllerName="onlinestore.controller.Products">
+            <m:VBox class="mainPage">
+            
+            <m:Breadcrumbs id="breadcrumbs1" class="sapUiTinyMarginTop" currentLocationText="AXIS T92E05">
+                <m:Link text="Main" press="onBreadcrumbPress" />
+                <m:Link text="Accesories" press="onBreadcrumbPress" />
+                <m:Link text="Camera" press="onBreadcrumbPress" />
+            </m:Breadcrumbs>
+
+            <m:Text text="Camera" class="productsCategory" />
+            <m:ComboBox class="productsSort" selectedKey="1" selectionChange="onSortChange">
+                <core:Item key="1" text="Best Sellers" />
+			    <core:Item key="2" text="Price: Low to High" />
+			    <core:Item key="3" text="Price: High to Low" />
+			</m:ComboBox>
+        
+        <m:HBox class="productsBlock">
+
+        <m:FlexBox
+            id="products"
+            width="100%"
+            wrap="Wrap"
+            alignItems="Start"
+            justifyContent="SpaceBetween"
+            items="{products}">
+             <m:VBox class="productsCard">
+                <m:Image src="{image}" class="productsImage" press="onItemPress"/>
+                <m:Text text="{price} USD." class="productsPrice" />
+                <m:Text text="{name}" class="productsName" />
+                <m:Button text="Add to cart" icon="sap-icon://cart" class="productsButton" press="onAddToCart"/>
+            </m:VBox>    
+        </m:FlexBox>
+        <!-- <m:VBox class="productsFilter">
+                <m:Text text="Sorting" class="productsSortLabel" />
+                <m:ComboBox>
+                    <core:Item key="1" text="Best Sellers" />
+				    <core:Item key="2" text="Price: Low to High" />
+				    <core:Item key="3" text="Price: High to Low" />
+			    </m:ComboBox>
+                <m:Button text="Add to cart" icon="sap-icon://cart" class="productsButton" />
+        </m:VBox>   -->
+        </m:HBox>
+ 
+
+              
+            </m:VBox>
+	</mvc:View>

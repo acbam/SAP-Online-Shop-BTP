@@ -8,6 +8,7 @@ modules:
   path: gen/srv
   requires:
   - name: btp-online-store-db
+  - name: btp-online-store-auth
   provides:
   - name: srv-api
     properties:
@@ -49,6 +50,36 @@ modules:
     - npm install
     - npm run build:cf
     supported-platforms: []
+- name: btp-online-store-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: btp-online-store-destination-service
+    parameters:
+      content-target: true
+  - name: btp-online-store-repo-host
+    parameters:
+      service-key:
+        name: btp-online-store-repo-host-key
+  - name: btp-online-store-auth
+    parameters:
+      service-key:
+        name: btp-online-store-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: onelinestore_router_btp_online_store_repo_host
+          ServiceInstanceName: btp-online-store-html5-srv
+          ServiceKeyName: btp-online-store-repo-host-key
+          sap.cloud.service: onelinestore-router
+        - Authentication: OAuth2UserTokenExchange
+          Name: onelinestore_router_uaa_btp_online_store
+          ServiceInstanceName: btp-online-store-auth
+          ServiceKeyName: btp-online-store-key
+          sap.cloud.service: onelinestore-router
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
 resources:
 - name: btp-online-store-db
   type: com.sap.xs.hdi-container
@@ -65,20 +96,34 @@ resources:
   type: org.cloudfoundry.managed-service
   parameters:
     config:
-      HTML5Runtime_enabled: false
+      HTML5Runtime_enabled: true
       init_data:
         instance:
           destinations:
-          - Authentication: NoAuthentication
-            Name: ui5
-            ProxyType: Internet
-            Type: HTTP
-            URL: https://ui5.sap.com
-          existing_destinations_policy: update
+            - Authentication: NoAuthentication
+              HTML5.DynamicDestination: true
+              HTML5.ForwardAuthToken: true
+              Name: btp-online-store-srv-api
+              ProxyType: Internet
+              Type: HTTP
+              URL: ~{srv-api/srv-url}
+          existing_destinations_policy: ignore
       version: 1.0.0
     service: destination
     service-name: btp-online-store-destination-service
     service-plan: lite
+  requires:
+      - name: srv-api
+- name: btp-online-store-auth
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      tenant-mode: dedicated
+      xsappname: btp-online-store
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: btp-online-store-auth
+    service-plan: application
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true

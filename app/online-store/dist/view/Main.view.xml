@@ -1,7 +1,26 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.f" controllerName="onlinestore.controller.Main">
-    <VBox class="mainPage">    
-    
-        <!-- <l:BlockLayout class="sapUiSmallMarginTop">
+    <VBox class="mainPage">
+        <Title text="Product categories" class="sapUiMediumMarginTop productTitle" />
+        <Text text="Explore the world of Cambium innovation and witness the transformative power of wireless connectivity for a connected future." 
+            class="sapUiSmallMarginTop sapUiMediumMarginBottom productSubtitle"/>
+        <FlexBox
+            width="100%"
+            wrap="Wrap"
+            alignItems="Start"
+            justifyContent="SpaceBetween"
+            items="{/Categories}">
+            <items>
+                <VBox width="17%" class="productCard">
+                    <customData>
+                        <core:CustomData key="id" value="{ID}" />
+                    </customData>
+                    <Image src="{image}" width="100%" height="150px" class="productImage"/>
+                    <Text text="{name}" class="productName" />
+                </VBox>
+            </items>
+        </FlexBox>
+<!--
+        <l:BlockLayout class="sapUiSmallMarginTop">
 			<l:BlockLayoutRow>
 				<l:BlockLayoutCell class="sapUiNoContentPadding slider">
                      <Carousel
@@ -12,26 +31,8 @@
                     </Carousel>
 				</l:BlockLayoutCell>
 			</l:BlockLayoutRow>
-		</l:BlockLayout> -->
-        
-        <Image width="100%" height="250px" class="banner" src="https://www.winncom.com/images/WinncomProductsBanner.jpg" />
-        <Title text="Product categories" class="sapUiMediumMarginTop productTitle" />
-        <Text text="Explore the world of Cambium innovation and witness the transformative power of wireless connectivity for a connected future." 
-            class="sapUiSmallMarginTop sapUiMediumMarginBottom productSubtitle"/>
-        <FlexBox
-            width="100%"
-            wrap="Wrap"
-            alignItems="Start"
-            justifyContent="SpaceBetween"
-            items="{/Categories}">
-			<CustomListItem class="productCard" type="Active" press="onItemPress">
-                    <Image src="{image}" class="productImage"/>
-                    <Text text="{name}" class="productName" />
-		    </CustomListItem>
-                         
-        </FlexBox>
-
-
+		</l:BlockLayout>
+-->
         <!-- <HBox width="100%" items="{/products}">
             <VBox width="20%" class="productCard">
                 <Image src="{image}" width="100%" height="150px" class="productImage"/>
