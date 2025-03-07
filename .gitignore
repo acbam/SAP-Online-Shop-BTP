@@ -1,4 +1,4 @@
-# CAP btp-online-store
+# CAP
 _out
 *.db
 *.sqlite
@@ -8,6 +8,10 @@ default-*.json
 gen/
 node_modules/
 target/
+db/data/
+dist/
+app/online-store/dist/
+mta*/
 
 # Web IDE, App Studio
 .che/
@@ -23,6 +27,8 @@ mta_archives/
 *.orig
 *.log
 
+resources/
+
 *.iml
 *.flattened-pom.xml
 
@@ -33,5 +39,17 @@ mta_archives/
 # @cap-js/cds-typer
 @cds-models
 
-# auto generated wildcard
+# Auto generated wildcard
 db/.env
+
+# Unit testing part
+test/coverage
+
+# Local integration testing
+test/integration
+
+junit.xml
+test-report.xml
+
+# Env props
+.env

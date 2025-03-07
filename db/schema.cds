@@ -28,14 +28,11 @@ entity Product: cuid {
     rating: Decimal;
 }
 
+@assert.unique.user: [email]
 entity User: cuid {
+    email: String;
     username: String;
     password: String;
-}
-entity UserSession: cuid {
-    login: String;
-    ipAddress: String;
-    createdAt : DateTime default $now;
 }
 
 entity ProductItem: cuid {

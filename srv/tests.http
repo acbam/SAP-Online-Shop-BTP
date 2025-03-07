@@ -1,7 +1,25 @@
-POST http://localhost:4004/odata/v4/catalog/Orders
+### Register
+POST http://localhost:4004/register
 Content-Type: application/json
-x-forwarded-for: 10.250.64.11, 127.0.0.1
 
 {
-    
+    "email" : "email",
+    "password" : "1234"
 }
+
+### Login
+POST http://localhost:4004/login
+Content-Type: application/json
+
+{
+    "email" : "email",
+    "password" : "1234"
+}
+
+### Get my user
+GET http://localhost:4004/odata/v4/catalog/Users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjllYzFkNmE1LTA0ZDUtNDMxZi05NmJjLWZlYjIzNDhiNjUwOCIsImVtYWlsIjoiZW1haWwiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MTM2Njk2MywiZXhwIjoxNzQxMzcwNTYzfQ.7V_UuKs_b7eKcQOGQyzjrCRNC89k_oABW554H30rBEU
+
+### Get orders
+GET http://localhost:4004/odata/v4/catalog/Orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE4NmFhOTVjLWJlZmUtNDhhZC1iNGY1LWFhN2E0YWEzMGEyMiIsImVtYWlsIjoiZW1haWwiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MTM2NjIwOSwiZXhwIjoxNzQxMzY5ODA5fQ.OKZm9GdjSQabup-ImBArEe1Ss8eVn9j3-urDAd5LG1U
